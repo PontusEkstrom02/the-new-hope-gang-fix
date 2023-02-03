@@ -11,9 +11,9 @@ export default function Data(props) {
       try {
         const response = await fetch(`https://swapi.dev/api/${props.category}/?search=${props.name}`);
         const data = await response.json();
-        list = data.results
+        list = data.results;
         setDataList(list[0]);
-        if(props.category === 'People'){
+        if(props.category == 'people'){
           const planetResponse = await fetch(list[0].homeworld);
           const planetData = await planetResponse.json();
           setPlanet(planetData);
@@ -25,7 +25,6 @@ export default function Data(props) {
     };
     fetchData();
   }, [props.name]);
-  console.log(props.category)
   if(props.category === 'people'){
     return (
       <>
